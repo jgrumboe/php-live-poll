@@ -74,8 +74,6 @@ $data = json_encode($data);
 
 <script>
 
-$(document).ready(function(){
- 
  var donut_chart = Morris.Donut({
      element: 'chart',
      data: <?php echo $data; ?>
@@ -105,7 +103,6 @@ $(document).ready(function(){
    });
   }
  }); 
-});
 
  updatePoll = function(){
      $.ajax({
