@@ -16,7 +16,7 @@ $sub_query = "
    GROUP BY framework 
    ORDER BY id ASC";
 $result = $db->query($sub_query);
-$data[] = array('label' => 'No votes yet', 'value' => 1);
+$data[] = array('label' => 'No Data', 'value' => 0);
 while($row = $result->fetchArray())
 {
  $data[] = array(
@@ -111,7 +111,7 @@ $data = json_encode($data);
       dataType:"json",
       success:function(data)
       {
-       donut_chart.setData(data);
+       donut_chart.setData(data.length ? data : [ { label:"No Data", value:0 } ]);
       }
      });
    }
