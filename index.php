@@ -106,7 +106,7 @@ $(document).ready(function(){
   }
  });
   
- var updatePoll = function(){
+ updatePoll = function(){
      $.ajax({
       url:"action.php",
       method:"GET",
