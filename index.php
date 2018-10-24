@@ -107,4 +107,17 @@ $(document).ready(function(){
  });
 });
 
+var updatePoll = function(){
+     $.ajax({
+    url:"action.php",
+    method:"GET",
+    success:function(data)
+    {
+     $('#like_form')[0].reset();
+     donut_chart.setData(data);
+    }
+   });
+}
+setInterval(updatePoll, 1000);
+
 </script>
