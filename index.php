@@ -1,13 +1,14 @@
 <?php 
 //index.php
-$connect = mysqli_connect("localhost", "root", "", "demo_lisenme");
+
+$db = new SQLite3('mysqlitedb.db');
 $sub_query = "
    SELECT framework, count(*) as no_of_like FROM like_table 
    GROUP BY framework 
    ORDER BY id ASC";
-$result = mysqli_query($connect, $sub_query);
+$result = $db->query($sub_query);
 $data = array();
-while($row = mysqli_fetch_array($result))
+while($row = $result->fetchArray())
 {
  $data[] = array(
   'label'  => $row["framework"],
