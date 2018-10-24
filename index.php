@@ -9,7 +9,7 @@ $create_table ="
     framework    TEXT    NOT NULL
   );
 ";
-$result = $db->query($create_table);
+$result = $db->exec($create_table);
 
 $sub_query = "
    SELECT framework, count(*) as no_of_like FROM like_table 
