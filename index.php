@@ -2,6 +2,15 @@
 //index.php
 
 $db = new SQLite3('mysqlitedb.db');
+
+$create_table ="
+  CREATE TABLE IF NOT EXISTS like_table (
+    project_id   INTEGER PRIMARY KEY,
+    framework    TEXT    NOT NULL
+  );
+";
+$result = $db->query($sub_query);
+
 $sub_query = "
    SELECT framework, count(*) as no_of_like FROM like_table 
    GROUP BY framework 
