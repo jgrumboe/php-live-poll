@@ -5,7 +5,7 @@ $db = new SQLite3('mysqlitedb.db');
 
 $create_table ="
   CREATE TABLE IF NOT EXISTS like_table (
-    project_id   INTEGER PRIMARY KEY,
+    id   INTEGER PRIMARY KEY,
     framework    TEXT    NOT NULL
   );
 ";
