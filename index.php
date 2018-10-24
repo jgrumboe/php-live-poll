@@ -104,8 +104,9 @@ $(document).ready(function(){
     }
    });
   }
- });
-  
+ }); 
+});
+
  updatePoll = function(){
      $.ajax({
       url:"action.php",
@@ -117,8 +118,5 @@ $(document).ready(function(){
      });
    }
  setInterval(updatePoll, 2000);
-
-});
-
 
 </script>
