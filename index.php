@@ -105,18 +105,20 @@ $(document).ready(function(){
    });
   }
  });
+  
+ var updatePoll = function(){
+     $.ajax({
+      url:"action.php",
+      method:"GET",
+      success:function(data)
+      {
+       donut_chart.setData(data);
+      }
+     });
+   }
+ setInterval(updatePoll, 2000);
+
 });
 
-var updatePoll = function(){
-     $.ajax({
-    url:"action.php",
-    method:"GET",
-    success:function(data)
-    {
-     donut_chart.setData(data);
-    }
-   });
-}
-setInterval(updatePoll, 2000);
 
 </script>
