@@ -8,6 +8,8 @@ if(isset($_POST["framework"]))
   INSERT INTO like_table(framework) VALUES('".$_POST["framework"]."')
  ";
  $db->query($query);
+ }
+
  $sub_query = "
    SELECT framework, count(*) as no_of_like FROM like_table 
    GROUP BY framework 
@@ -23,5 +25,4 @@ if(isset($_POST["framework"]))
  }
  $data = json_encode($data);
  echo $data;
-}
 ?>
