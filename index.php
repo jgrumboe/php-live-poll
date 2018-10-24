@@ -108,6 +108,7 @@ $data = json_encode($data);
      $.ajax({
       url:"action.php",
       method:"GET",
+      dataType:"json",
       success:function(data)
       {
        donut_chart.setData(data);
