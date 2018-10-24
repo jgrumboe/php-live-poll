@@ -16,7 +16,7 @@ $sub_query = "
    GROUP BY framework 
    ORDER BY id ASC";
 $result = $db->query($sub_query);
-$data = array();
+$data[] = array('label' => 'No votes yet', 'value' => 1);
 while($row = $result->fetchArray())
 {
  $data[] = array(
