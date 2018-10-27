@@ -4,24 +4,24 @@
 $db = new SQLite3('mysqlitedb.db');
 
 $create_table ="
-  CREATE TABLE IF NOT EXISTS like_table (
+  CREATE TABLE IF NOT EXISTS votes_table (
     id   INTEGER PRIMARY KEY,
-    framework    TEXT    NOT NULL
+    vote    TEXT    NOT NULL
   );
 ";
 $result = $db->exec($create_table);
 
 $sub_query = "
-   SELECT framework, count(*) as no_of_like FROM like_table 
-   GROUP BY framework 
+   SELECT vote, count(*) as no_of_vote FROM votes_table 
+   GROUP BY vote 
    ORDER BY id ASC";
 $result = $db->query($sub_query);
 $data[] = array('label' => 'No Data', 'value' => 0);
 while($row = $result->fetchArray())
 {
  $data[] = array(
-  'label'  => $row["framework"],
-  'value'  => $row["no_of_like"]
+  'label'  => $row["vote"],
+  'value'  => $row["no_of_vote"]
  );
 }
 $data = json_encode($data);
@@ -31,7 +31,7 @@ $data = json_encode($data);
 <!DOCTYPE html>
 <html>
  <head>
-  <title> PHP & Ajax | Morris donut chart with dynamic json data | Lisenme.com </title>  
+  <title> Poll : Isn't this cool? </title>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -42,30 +42,18 @@ $data = json_encode($data);
  <body>
   <br /><br />
   <div class="container" style="width:900px;">
-   <h2 align="center">PHP & Ajax | Morris donut chart with dynamic json data </h2>
+   <h2 align="center">Isn't this cool?</h2>
       <br>
    <form method="post" id="like_form">
-    <div class="form-group">
-     <label>Like Any one Coding </label>
      <div class="radio">
-      <label><input type="radio" name="framework" value="HTML5" /> HTML5</label>
+      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" value="Yes" />
      </div>
      <div class="radio">
-      <label><input type="radio" name="framework" value="CSS3" /> CSS3</label>
+      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" value="No" />
      </div>
      <div class="radio">
-      <label><input type="radio" name="framework" value="JAVASCRIPT" /> JAVASCRIPT</label>
+      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" value="Maybe" />
      </div>
-     <div class="radio">
-      <label><input type="radio" name="framework" value="PHP" /> PHP</label>
-     </div>
-     <div class="radio">
-      <label><input type="radio" name="framework" value="JQUERY" /> JQUERY</label>
-     </div>
-    </div>
-    <div class="form-group">
-     <input type="submit" name="like" class="btn btn-info" value="Like" />
-    </div>
    </form>
    <div id="chart"></div>
   </div>
@@ -78,32 +66,20 @@ $data = json_encode($data);
      element: 'chart',
      data: <?php echo $data; ?>
     });
-  
- $('#like_form').on('submit', function(event){
-  event.preventDefault();
-  var checked = $('input[name=framework]:checked', '#like_form').val();
-  if(checked == undefined)
-  {
-   alert("Please Like any Framework");
-   return false;
-  }
-  else
-  {
-   var form_data = $(this).serialize();
+ 
+ function submit_vote(id){
+   var value = document.getElementById(id).getAttribute('value');
    $.ajax({
     url:"action.php",
     method:"POST",
-    data:form_data,
+    data:"vote=" + value,
     dataType:"json",
     success:function(data)
     {
-     $('#like_form')[0].reset();
      donut_chart.setData(data);
     }
-   });
-  }
- }); 
-
+ }
+ 
  updatePoll = function(){
      $.ajax({
       url:"action.php",
