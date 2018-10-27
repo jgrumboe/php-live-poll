@@ -90,7 +90,7 @@ $data = json_encode($data);
       dataType:"json",
       success:function(data)
       {
-        if (data.length and previous_data != data) {
+        if (data.length && previous_data != data) {
           previous_data=data;
           donut_chart.setData(data);
         }
