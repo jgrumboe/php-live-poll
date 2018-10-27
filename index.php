@@ -46,13 +46,13 @@ $data = json_encode($data);
       <br>
    <form method="post" id="like_form">
      <div class="radio">
-      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" value="Yes" />
+      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_yes" value="Yes" />
      </div>
      <div class="radio">
-      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" value="No" />
+      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_no" value="No" />
      </div>
      <div class="radio">
-      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" value="Maybe" />
+      <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
      </div>
    </form>
    <div id="chart"></div>
