@@ -78,6 +78,7 @@ $data = json_encode($data);
     {
      donut_chart.setData(data);
     }
+   });
  }
  
  updatePoll = function(){
