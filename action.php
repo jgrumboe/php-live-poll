@@ -2,25 +2,25 @@
 //action.php
 $db = new SQLite3('mysqlitedb.db');
 
-if(isset($_POST["framework"]))
+if(isset($_POST["vote"]))
 {
  $query = "
-  INSERT INTO like_table(framework) VALUES('".$_POST["framework"]."')
+  INSERT INTO votes_table(vote) VALUES('".$_POST["vote"]."')
  ";
  $db->query($query);
  }
 
  $sub_query = "
-   SELECT framework, count(*) as no_of_like FROM like_table 
-   GROUP BY framework 
+   SELECT vote, count(*) as no_of_vote FROM votes_table 
+   GROUP BY vote 
    ORDER BY id ASC";
  $result = $db->query($sub_query);
  $data = array();
  while($row = $result->fetchArray())
  {
   $data[] = array(
-   'label'  => $row["framework"],
-   'value'  => $row["no_of_like"]
+   'label'  => $row["vote"],
+   'value'  => $row["no_of_vote"]
   );
  }
  $data = json_encode($data);
