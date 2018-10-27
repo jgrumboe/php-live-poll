@@ -67,6 +67,8 @@ $data = json_encode($data);
      data: <?php echo $data; ?>
     });
  
+ var previous_data;
+   
  function submit_vote(id){
    var value = document.getElementById(id).getAttribute('value');
    $.ajax({
@@ -88,7 +90,10 @@ $data = json_encode($data);
       dataType:"json",
       success:function(data)
       {
-       donut_chart.setData(data.length ? data : [ { label:"No Data", value:0 } ]);
+        if (data.length and previous_data != data) {
+          previous_data=data;
+          donut_chart.setData(data);
+        }
       }
      });
    }
