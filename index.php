@@ -44,6 +44,10 @@ $data = json_encode($data);
   <div class="container" style="width:900px;">
    <h2 align="center">Isn't this cool?</h2>
       <br>
+<table style="width:90%; text-align: "center">
+<tbody>
+<tr>
+<td valign="middle">
    <form method="post" id="like_form">
      <div class="radio">
       <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_yes" value="Yes" />
@@ -55,7 +59,13 @@ $data = json_encode($data);
       <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
      </div>
    </form>
-   <div id="chart"></div>
+   </td>
+   <td valign="middle">
+   <div id="chart">HIER ist dann der GRAPH</div>
+   </td>
+</tr>
+</tbody>
+</table>
   </div>
  </body>
 </html>
