@@ -44,7 +44,7 @@ $data = json_encode($data);
   <div class="container" style="width:900px;">
    <h2 align="center">Isn't this cool?</h2>
       <br>
-<table style="width:90%; text-align: "center">
+<table style="width:90%; text-align:center">
 <tbody>
 <tr>
 <td valign="middle">
@@ -59,6 +59,7 @@ $data = json_encode($data);
       <input type="button" name="button" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
      </div>
    </form>
+  <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fphp-poll-gru.ext.ocp.porscheinformatik.cloud%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
    </td>
    <td valign="middle">
    <div id="chart"></div>
