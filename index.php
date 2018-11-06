@@ -78,6 +78,22 @@ $data = json_encode($data);
     });
  
  var previous_data;
+ 
+ function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length != b.length) return false;
+
+  // If you don't care about the order of the elements inside
+  // the array, you should sort both arrays here.
+  // Please note that calling sort on an array will modify that array.
+  // you might want to clone your array first.
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
    
  function submit_vote(id){
    var value = document.getElementById(id).getAttribute('value');
@@ -100,7 +116,7 @@ $data = json_encode($data);
       dataType:"json",
       success:function(data)
       {
-        if (data.length && previous_data != data) {
+        if (data.length && arraysEqual(previous_data,data)) {
           previous_data=data;
           donut_chart.setData(data);
         }
