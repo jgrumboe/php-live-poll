@@ -61,7 +61,7 @@ $data = json_encode($data);
    </form>
    </td>
    <td valign="middle">
-   <div id="chart">HIER ist dann der GRAPH</div>
+   <div id="chart"></div>
    </td>
 </tr>
 </tbody>
