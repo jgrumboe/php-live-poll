@@ -1,6 +1,9 @@
 <?php 
 //index.php
 
+require_once "libs/Mobile_Detect.php";
+$detect = new Mobile_Detect;
+
 $db = new SQLite3('mysqlitedb.db');
 
 $create_table ="
@@ -59,7 +62,13 @@ $data = json_encode($data);
       <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
      </div>
    </form>
+<?php
+  if( $detect->isMobile() && !$detect->isTablet() ){
+?> 
   <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2F<?php echo $_SERVER['HTTP_HOST'] ?>%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
+<?php
+}
+?>
    </td>
    <td valign="middle">
    <div id="chart"></div>
