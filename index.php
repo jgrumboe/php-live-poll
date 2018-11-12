@@ -118,9 +118,9 @@ $data = json_encode($data);
       success:function(data)
       {
         if (data.length && arraysEqual(previous_data,data)) {
-          previous_data=data;
           donut_chart.setData(data);
         }
+        previous_data=data;
       }
      });
    }
