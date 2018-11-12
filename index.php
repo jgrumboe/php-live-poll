@@ -63,7 +63,7 @@ $data = json_encode($data);
      </div>
    </form>
 <?php
-  if( $detect->isMobile() && !$detect->isTablet() ){
+  if( !$detect->isMobile() ){
 ?> 
   <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2F<?php echo $_SERVER['HTTP_HOST'] ?>%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
 <?php
@@ -88,6 +88,7 @@ $data = json_encode($data);
     });
  
  var previous_data;
+ var recent_data;
  
  function arraysEqual(a, b) {
   if (a === b) return true;
@@ -126,6 +127,7 @@ $data = json_encode($data);
       dataType:"json",
       success:function(data)
       {
+        recent_data=data;
         if (data.length && !arraysEqual(previous_data,data)) {
           previous_data=data;
           donut_chart.setData(data);
