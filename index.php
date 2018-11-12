@@ -50,16 +50,16 @@ $data = json_encode($data);
 <td valign="middle">
    <form method="post" id="like_form">
      <div class="radio">
-      <input type="button" name="button" style="font-size : 50px; width: 50%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_yes" value="Yes" />
+      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_yes" value="Yes" />
      </div>
      <div class="radio">
-      <input type="button" name="button" style="font-size : 50px; width: 50%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_no" value="No" />
+      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_no" value="No" />
      </div>
      <div class="radio">
-      <input type="button" name="button" style="font-size : 50px; width: 50%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
+      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
      </div>
    </form>
-  <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fphp-poll-gru.ext.ocp.porscheinformatik.cloud%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
+  <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2F<?php echo $_SERVER['HTTP_HOST'] ?>%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
    </td>
    <td valign="middle">
    <div id="chart"></div>
