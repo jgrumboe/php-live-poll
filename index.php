@@ -50,6 +50,11 @@ $data = json_encode($data);
 <table style="width:90%; text-align:center">
 <tbody>
 <tr>
+
+<?php
+if( $detect->isMobile() ){
+?> 
+
 <td valign="middle">
    <form method="post" id="like_form">
      <div class="radio">
@@ -61,18 +66,21 @@ $data = json_encode($data);
      <div class="radio">
       <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
      </div>
-   </form>
+    </form>
+  </td>
 <?php
-  if( !$detect->isMobile() ){
-?> 
-  <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2F<?php echo $_SERVER['HTTP_HOST'] ?>%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
-<?php
-}
+} else {
 ?>
+   <td>
+    <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2F<?php echo $_SERVER['HTTP_HOST'] ?>%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
    </td>
    <td valign="middle">
    <div id="chart"></div>
    </td>
+<?php
+}
+?>
+  
 </tr>
 </tbody>
 </table>
@@ -112,14 +120,13 @@ $data = json_encode($data);
     url:"action.php",
     method:"POST",
     data:"vote=" + value,
-    dataType:"json",
-    success:function(data)
-    {
-     donut_chart.setData(data);
-    }
+    dataType:"json"
    });
  }
  
+<?php
+if( !$detect->isMobile() ){
+?> 
  updatePoll = function(){
      $.ajax({
       url:"action.php",
@@ -136,5 +143,8 @@ $data = json_encode($data);
      });
    }
  setInterval(updatePoll, 2000);
+<?php
+}
+?> 
 
 </script>
