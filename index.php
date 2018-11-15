@@ -47,7 +47,7 @@ $data = json_encode($data);
   <div class="container" style="width:900px;">
    <h2 align="center">Cool or not?</h2>
       <br>
-<table style="width:90%; text-align:center">
+<table style="width:100%; text-align:center">
 <tbody>
 <tr>
 
@@ -58,13 +58,13 @@ if( $detect->isMobile() ){
 <td valign="middle">
    <form method="post" id="like_form">
      <div class="radio">
-      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_yes" value="Yes" />
+      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-primary" onClick="submit_vote(this.id);" id="btn_yes" value="Yes" />
      </div>
      <div class="radio">
-      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_no" value="No" />
+      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-primary" onClick="submit_vote(this.id);" id="btn_no" value="No" />
      </div>
      <div class="radio">
-      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-info" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
+      <input type="button" name="button" style="font-size : 50px; width: 90%; height: 100px;" class="btn btn-primary" onClick="submit_vote(this.id);" id="btn_maybe" value="Maybe" />
      </div>
     </form>
   </td>
@@ -72,7 +72,7 @@ if( $detect->isMobile() ){
 } else {
 ?>
    <td>
-    <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2F<?php echo $_SERVER['HTTP_HOST'] ?>%2F&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
+    <img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2F<?php echo $_SERVER['HTTP_HOST'] ?>%2F&chs=250x250&choe=UTF-8&chld=L|2' alt=''>
    </td>
    <td valign="middle">
    <div id="chart"></div>
@@ -90,30 +90,6 @@ if( $detect->isMobile() ){
 
 <script>
 
- var donut_chart = Morris.Donut({
-     element: 'chart',
-     data: <?php echo $data; ?>
-    });
- 
- var previous_data;
- var recent_data;
- 
- function arraysEqual(a, b) {
-  if (a === b) return true;
-  if (a == null || b == null) return false;
-  if (a.length != b.length) return false;
-
-  // If you don't care about the order of the elements inside
-  // the array, you should sort both arrays here.
-  // Please note that calling sort on an array will modify that array.
-  // you might want to clone your array first.
-
-  for (var i = 0; i < a.length; ++i) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
-}
-   
  function submit_vote(id){
    var value = document.getElementById(id).getAttribute('value');
    $.ajax({
@@ -127,7 +103,16 @@ if( $detect->isMobile() ){
 <?php
 if( !$detect->isMobile() ){
 ?> 
- updatePoll = function(){
+ var donut_chart = Morris.Donut({
+     element: 'chart',
+     data: <?php echo $data; ?>
+    });
+ 
+ var previous_data;
+ var recent_data;
+   
+
+  updatePoll = function(){
      $.ajax({
       url:"action.php",
       method:"GET",
