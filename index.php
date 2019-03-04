@@ -45,7 +45,7 @@ $data = json_encode($data);
  <body>
   <br /><br />
   <div class="container" style="width:900px;">
-   <h2 align="center">Coll or not?</h2>
+   <h2 align="center">Cool or not?</h2>
       <br>
 <table style="width:100%; text-align:center">
 <tbody>
